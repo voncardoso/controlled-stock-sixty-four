@@ -16,6 +16,8 @@ interface PropsInventary{
 }
 
 
+
+
 export function Inventory(){
     const [isActive, setIsactive] = useState(false);
     const [dataIventory, setDataInventory] = useState<any>([]);
@@ -45,7 +47,7 @@ export function Inventory(){
         calcPagination()
     },[dataIventory, currentPage])
 
-    const handleChangePage = (e, newPage) =>{
+    const handleChangePage = (e: object, newPage: number) =>{
         setCurrentPerPage(newPage - 1)
     }
 
