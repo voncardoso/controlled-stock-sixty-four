@@ -8,6 +8,10 @@ export const ContainerInventory = styled.section`
     align-items: center;
     margin: 3.75rem auto 0 auto;
     padding: 0px 20px ;
+
+    nav{
+        margin-bottom: 20px;
+    }
 `;
 
 export const HeaderInventory = styled.header`
@@ -51,6 +55,7 @@ export const HeaderInventory = styled.header`
 export const TableInventory = styled.table`
     width: 100%;
     border-collapse: collapse;
+    margin-bottom: 20px;
     // min-width: 600px;
     th{
         background: ${(props) => props.theme['gray-400']};

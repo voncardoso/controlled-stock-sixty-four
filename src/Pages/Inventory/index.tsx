@@ -4,6 +4,8 @@ import { MagnifyingGlass } from "phosphor-react";
 import { useEffect, useState } from "react";
 import { ProductRegistration } from "../../components/ProductRegistration";
 import { ContainerInventory, HeaderInventory, TableInventory } from "./style";
+import { PaginationComponent } from "../../components/Pagination/Index";
+
 
 interface PropsInventary{
     id: string,
@@ -13,9 +15,14 @@ interface PropsInventary{
     date: string,
 }
 
+
 export function Inventory(){
     const [isActive, setIsactive] = useState(false);
-    const [dataIventory, setDataInventory] = useState<any>([])
+    const [dataIventory, setDataInventory] = useState<any>([]);
+    const [currentPage, setCurrentPerPage] = useState(0);
+    const [itensPerPage, setItensPerPage] = useState(10);
+    const [pages, setPages] = useState(0);
+    const [currentItens, setCurrentItens] = useState<any>([]);
 
     useEffect(() =>{
         async function getInvevtory(){
@@ -26,10 +33,28 @@ export function Inventory(){
         getInvevtory()
     },[])
 
+    useEffect(() => {
+        function calcPagination(){
+             setPages(Math.ceil(dataIventory.length /  itensPerPage))
+            
+            const startIndex = currentPage * itensPerPage;
+            const endIndex = startIndex + itensPerPage
+
+            setCurrentItens(dataIventory.slice(startIndex, endIndex))
+        }
+        calcPagination()
+    },[dataIventory, currentPage])
+
+    const handleChangePage = (e, newPage) =>{
+        setCurrentPerPage(newPage - 1)
+    }
+
     function handleActiceModal(active: boolean){
         setIsactive(active)
     }
-    console.log(dataIventory)
+    
+
+    console.log(currentPage)
     return(
         <>
             <ContainerInventory>
@@ -53,7 +78,7 @@ export function Inventory(){
                           </tr>
                      </thead>
                      <tbody>
-                        {dataIventory.map((inventary: PropsInventary) =>{
+                        {currentItens.map((inventary: PropsInventary) =>{
                             return(
                                 <tr key={inventary.id}>
                                     <td>{inventary.name}</td>
@@ -67,9 +92,10 @@ export function Inventory(){
                         })}
                     </tbody>
                 </TableInventory>
+                <PaginationComponent pages={pages} handleChangePage={handleChangePage}/>
             </ContainerInventory >
 
-            <ProductRegistration isActive={isActive} setIsactive={setIsactive}/>
+            <ProductRegistration isActive={isActive}  setIsactive={setIsactive}/>
         </>
     )
 }
