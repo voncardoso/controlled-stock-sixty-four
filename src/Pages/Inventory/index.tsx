@@ -55,8 +55,6 @@ export function Inventory(){
         setIsactive(active)
     }
     
-
-    console.log(currentPage)
     return(
         <>
             <ContainerInventory>

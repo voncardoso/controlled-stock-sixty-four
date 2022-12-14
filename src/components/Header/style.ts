@@ -44,4 +44,11 @@ export const Nav = styled.nav`
         background: ${(props) => props.theme["gray-400"]};
         border-radius: 6px;
    }
+
+
+   @media (max-width: 500px) {
+    overflow-x: auto;
+    z-index: 1000;
+    top: 0;
+   }
 `;

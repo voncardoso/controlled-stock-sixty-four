@@ -12,6 +12,10 @@ export const ContainerInventory = styled.section`
     nav{
         margin-bottom: 20px;
     }
+
+    @media (max-width: 500px){
+        
+    }
 `;
 
 export const HeaderInventory = styled.header`
@@ -30,7 +34,7 @@ export const HeaderInventory = styled.header`
 
     svg{
         position: relative;
-        right: 30px;
+        left: -30px;
         top: 4px;
         color: ${(props) => props.theme['gray-100']};
     }
@@ -48,6 +52,28 @@ export const HeaderInventory = styled.header`
 
     button:hover{
         background: ${(props) => props.theme['red-500']};
+    }
+
+    @media (max-width: 500px) {
+        flex-direction: column-reverse;
+        margin-bottom: 1rem;
+        button{
+            margin-bottom: 20px;
+        }
+
+        div{
+            width: 100%;
+            input{
+                width: 100%;
+            }
+
+            svg{
+                position: relative;
+                top: -26px;
+                left: 90%;
+                align-self: center;
+            }
+        }
     }
 `;
 
@@ -95,4 +121,10 @@ export const TableInventory = styled.table`
         text-align: center;
       }
     }
-`;
+
+    @media (max-width: 500px) {
+        th, td{
+            padding: 0.5rem;
+        }
+    }
+`; 
