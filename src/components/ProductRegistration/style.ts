@@ -81,5 +81,13 @@ export const ContainerResgistrationForm = styled.form`
         background: ${(props) => props.theme['red-500']}; 
     }
 
+    @media (max-width: 500px) {
+        max-width: 300px;
+        width: 100%;
 
+        input{
+            padding: 0.5rem;
+            border-radius: 5px;     
+        }
+    }
 `;
