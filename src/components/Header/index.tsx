@@ -1,14 +1,26 @@
-import {NavLink } from "react-router-dom";
+import {NavLink, useNavigate } from "react-router-dom";
 import { SignOut } from "phosphor-react";
 import LogoSvg from "../../assets/LogoSVG.svg"
 import { Nav } from "./style";
-
-interface ActiveLink {
-    isActive: boolean;
-    isPending: boolean; 
-}
+import { getAuth, signOut } from "firebase/auth";
 
 export function Header(){
+    const navigate = useNavigate();
+
+    function Logout(){
+        const auth = getAuth();
+        let response = window.confirm("Certeza que deseja sair ?");
+        if (response === true) {
+            signOut(auth)
+              .then(() => {
+                window.localStorage.removeItem("token");
+                navigate("/");
+              })
+              .catch((error) => {
+                // An error happened.
+              });
+          }
+    }
     let activeStyle = {
         color: "#F4EDE8",
         background: "#3E3B47",
@@ -42,7 +54,7 @@ export function Header(){
             </div>
             <button>
                 Sair
-                <SignOut size={20}/>
+                <SignOut onClick={Logout} size={20}/>
             </button>
         </Nav>
     )
