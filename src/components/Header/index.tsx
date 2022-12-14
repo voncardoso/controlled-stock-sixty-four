@@ -35,8 +35,8 @@ export function Header(){
                     style={({ isActive }) =>
                     isActive ? activeStyle : undefined
                     } 
-                    to="/home">
-                        Home
+                    to="/vendas">
+                        Vendas
                     </NavLink>
                 <NavLink 
                     style={({ isActive }) =>

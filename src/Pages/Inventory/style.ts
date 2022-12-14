@@ -131,5 +131,8 @@ export const TableInventory = styled.table`
         th, td{
             padding: 0.5rem;
         }
+        .iconUpdate{
+            display: none;
+        }
     }
 `; 

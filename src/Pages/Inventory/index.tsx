@@ -1,7 +1,7 @@
 import { collection, getDocs } from "firebase/firestore";
 import {db} from "../../config/index"
 import { MagnifyingGlass,  ArrowClockwise} from "phosphor-react";
-import { useEffect, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { ProductRegistration } from "../../components/ProductRegistration";
 import { ContainerInventory, HeaderInventory, TableInventory } from "./style";
 import { PaginationComponent } from "../../components/Pagination/Index";
@@ -25,10 +25,10 @@ export function Inventory(){
     const [itensPerPage, setItensPerPage] = useState(10);
     const [pages, setPages] = useState(0);
     const [currentItens, setCurrentItens] = useState<any>([]);
-    
+    const [filteredProduct, setFilteredProduct] = useState<[]>([]) 
+    const [seach, setSeach] = useState("") 
     const mobile = useMedia('(max-width: 31rem)')
 
-    console.log('mobile',mobile)
 
     useEffect(() =>{
         async function getInvevtory(){
@@ -51,6 +51,17 @@ export function Inventory(){
         calcPagination()
     },[dataIventory, currentPage])
 
+    function FilterItem(event){
+        setSeach(event.target.value)
+        console.log(seach.length)
+        if(seach.length > 0){
+            console.log("foi")
+            setFilteredProduct(
+                dataIventory.filter((item: PropsInventary) => item.name.toString().toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase()))
+            )
+        }
+    }
+
     const handleChangePage = (e: object, newPage: number) =>{
         setCurrentPerPage(newPage - 1)
     }
@@ -58,13 +69,18 @@ export function Inventory(){
     function handleActiceModal(active: boolean){
         setIsactive(active)
     }
-    
+    console.log(seach.length)
     return(
         <>
             <ContainerInventory>
                 <HeaderInventory>
                     <div>
-                        <input type="text"  placeholder="Pesquisar produto"/>
+                        <input 
+                            type="text"  
+                            placeholder="Pesquisar produto"
+                            value={seach}
+                            onChange={FilterItem}
+                        />
                         <MagnifyingGlass size={20}/>
                     </div>
                     <button onClick={() =>{
@@ -79,45 +95,89 @@ export function Inventory(){
                               <th>Valor</th>
                               <th>Data</th>
                               <th style={{textAlign: "center"}}>Quant</th>
-                              <th></th>
+                              {mobile ? "" : <th></th>}
                           </tr>
                      </thead>
 
                      {mobile ? 
                         <tbody>
-                            {dataIventory.map((inventary: PropsInventary) =>{
-                                return(
-                                    <tr key={inventary.id}>
-                                        <td>{inventary.name}</td>
-                                        <td>{inventary.value.toLocaleString('pt-br', {
-                                            style: 'currency', currency: 'BRL'
-                                        })}</td>
-                                        <td>{inventary.date}</td>
-                                        <td style={{textAlign: "center",color: inventary.amount > 0 ? '#11e6a6' : '#FF9000'}}>{inventary.amount}</td>
-                                        <td><ArrowClockwise size={18}/></td>
-                                    </tr>
-                                )
-                            })}
+                            {filteredProduct.length > 0 ? 
+                                <>
+                                    {filteredProduct.map((inventary: PropsInventary) =>{
+                                        return(
+                                            <tr key={inventary.id}>
+                                                <td>{inventary.name}</td>
+                                                <td>{inventary.value.toLocaleString('pt-br', {
+                                                    style: 'currency', currency: 'BRL'
+                                                })}</td>
+                                                <td>{inventary.date}</td>
+                                                <td style={{textAlign: "center",color: inventary.amount > 0 ? '#11e6a6' : '#FF9000'}}>{inventary.amount}</td>
+                                                {mobile ? "" :  <td className="iconUpdate"><ArrowClockwise/></td>}
+                                            </tr>
+                                        )
+                                    })} 
+                                </> : 
+                                <>
+                                    {dataIventory.map((inventary: PropsInventary) =>{
+                                        return(
+                                            <tr key={inventary.id}>
+                                                <td>{inventary.name}</td>
+                                                <td>{inventary.value.toLocaleString('pt-br', {
+                                                    style: 'currency', currency: 'BRL'
+                                                })}</td>
+                                                <td>{inventary.date}</td>
+                                                <td style={{textAlign: "center",color: inventary.amount > 0 ? '#11e6a6' : '#FF9000'}}>{inventary.amount}</td>
+                                                {mobile ? "" :  <td className="iconUpdate"><ArrowClockwise/></td>}
+                                            </tr>
+                                        )
+                                    })} 
+                                </>
+                            } 
                         </tbody> 
                         :
                         <tbody>
-                            {currentItens.map((inventary: PropsInventary) =>{
-                                return(
-                                    <tr key={inventary.id}>
-                                        <td>{inventary.name}</td>
-                                        <td>{inventary.value.toLocaleString('pt-br', {
-                                            style: 'currency', currency: 'BRL'
-                                        })}</td>
-                                        <td>{inventary.date}</td>
-                                        <td style={{textAlign: "center",color: inventary.amount > 0 ? '#11e6a6' : '#FF9000'}}>{inventary.amount}</td>
-                                        <td><ArrowClockwise/></td>
-                                    </tr>
-                                )
-                            })}
+                            {seach.length > 0 ? 
+                                <>
+                                    {filteredProduct.map((inventary: PropsInventary) =>{
+                                        return(
+                                            <tr key={inventary.id}>
+                                                <td>{inventary.name}</td>
+                                                <td>{inventary.value.toLocaleString('pt-br', {
+                                                    style: 'currency', currency: 'BRL'
+                                                })}</td>
+                                                <td>{inventary.date}</td>
+                                                <td style={{textAlign: "center",color: inventary.amount > 0 ? '#11e6a6' : '#FF9000'}}>{inventary.amount}</td>
+                                               {mobile ? "" :  <td className="iconUpdate"><ArrowClockwise/></td>}
+                                            </tr>
+                                        )
+                                    })}
+                                </> 
+                                : 
+                                <>
+                                    {currentItens.map((inventary: PropsInventary) =>{
+                                        return(
+                                            <tr key={inventary.id}>
+                                                <td>{inventary.name}</td>
+                                                <td>{inventary.value.toLocaleString('pt-br', {
+                                                    style: 'currency', currency: 'BRL'
+                                                })}</td>
+                                                <td>{inventary.date}</td>
+                                                <td style={{textAlign: "center",color: inventary.amount > 0 ? '#11e6a6' : '#FF9000'}}>{inventary.amount}</td>
+                                               {mobile ? "" :  <td className="iconUpdate"><ArrowClockwise/></td>}
+                                            </tr>
+                                        )
+                                    })}
+                                </>
+                            }
                         </tbody>
                     }
                 </TableInventory>
-                {mobile ? "" : <PaginationComponent pages={pages} handleChangePage={handleChangePage}/>}
+
+                {mobile ? "" : <>{seach.length > 0 ? "" : <PaginationComponent  pages={pages} handleChangePage={handleChangePage}/>}</>}
+                    
+                    
+                
+                
             </ContainerInventory >
 
             <ProductRegistration isActive={isActive}  setIsactive={setIsactive}/>

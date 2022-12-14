@@ -1,6 +1,6 @@
 import { Header } from "../../components/Header";
 
-export function Home(){
+export function Sales(){
     return (
         <section>
             <h1>Home</h1>
