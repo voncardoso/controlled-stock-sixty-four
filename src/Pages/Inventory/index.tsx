@@ -1,11 +1,11 @@
 import { collection, getDocs } from "firebase/firestore";
 import {db} from "../../config/index"
-import { MagnifyingGlass } from "phosphor-react";
+import { MagnifyingGlass,  ArrowClockwise} from "phosphor-react";
 import { useEffect, useState } from "react";
 import { ProductRegistration } from "../../components/ProductRegistration";
 import { ContainerInventory, HeaderInventory, TableInventory } from "./style";
 import { PaginationComponent } from "../../components/Pagination/Index";
-
+import  useMedia  from "../../Hooks/UseMedia";
 
 interface PropsInventary{
     id: string,
@@ -25,6 +25,10 @@ export function Inventory(){
     const [itensPerPage, setItensPerPage] = useState(10);
     const [pages, setPages] = useState(0);
     const [currentItens, setCurrentItens] = useState<any>([]);
+    
+    const mobile = useMedia('(max-width: 31rem)')
+
+    console.log('mobile',mobile)
 
     useEffect(() =>{
         async function getInvevtory(){
@@ -74,25 +78,46 @@ export function Inventory(){
                               <th>Produto</th>
                               <th>Valor</th>
                               <th>Data</th>
-                              <th>Quant</th>
+                              <th style={{textAlign: "center"}}>Quant</th>
+                              <th></th>
                           </tr>
                      </thead>
-                     <tbody>
-                        {currentItens.map((inventary: PropsInventary) =>{
-                            return(
-                                <tr key={inventary.id}>
-                                    <td>{inventary.name}</td>
-                                    <td>{inventary.value.toLocaleString('pt-br', {
-                                        style: 'currency', currency: 'BRL'
-                                    })}</td>
-                                    <td>{inventary.date}</td>
-                                    <td style={{color: inventary.amount > 0 ? '#11e6a6' : '#FF9000'}}>{inventary.amount}</td>
-                                </tr>
-                            )
-                        })}
-                    </tbody>
+
+                     {mobile ? 
+                        <tbody>
+                            {dataIventory.map((inventary: PropsInventary) =>{
+                                return(
+                                    <tr key={inventary.id}>
+                                        <td>{inventary.name}</td>
+                                        <td>{inventary.value.toLocaleString('pt-br', {
+                                            style: 'currency', currency: 'BRL'
+                                        })}</td>
+                                        <td>{inventary.date}</td>
+                                        <td style={{textAlign: "center",color: inventary.amount > 0 ? '#11e6a6' : '#FF9000'}}>{inventary.amount}</td>
+                                        <td><ArrowClockwise size={18}/></td>
+                                    </tr>
+                                )
+                            })}
+                        </tbody> 
+                        :
+                        <tbody>
+                            {currentItens.map((inventary: PropsInventary) =>{
+                                return(
+                                    <tr key={inventary.id}>
+                                        <td>{inventary.name}</td>
+                                        <td>{inventary.value.toLocaleString('pt-br', {
+                                            style: 'currency', currency: 'BRL'
+                                        })}</td>
+                                        <td>{inventary.date}</td>
+                                        <td style={{textAlign: "center",color: inventary.amount > 0 ? '#11e6a6' : '#FF9000'}}>{inventary.amount}</td>
+                                        <td><ArrowClockwise/></td>
+                                    </tr>
+                                )
+                            })}
+                        </tbody>
+                    }
                 </TableInventory>
-                <PaginationComponent pages={pages} handleChangePage={handleChangePage}/>
+                {mobile ? "" : <PaginationComponent pages={pages} handleChangePage={handleChangePage}/>}
             </ContainerInventory >
 
             <ProductRegistration isActive={isActive}  setIsactive={setIsactive}/>

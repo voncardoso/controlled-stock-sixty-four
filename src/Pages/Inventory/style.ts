@@ -82,6 +82,11 @@ export const TableInventory = styled.table`
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 20px;
+
+    svg{
+        color: ${(props) => props.theme['blue']};
+        cursor: pointer;
+    }
     // min-width: 600px;
     th{
         background: ${(props) => props.theme['gray-400']};
