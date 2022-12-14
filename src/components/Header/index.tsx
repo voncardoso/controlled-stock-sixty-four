@@ -8,6 +8,7 @@ export function Header(){
     const navigate = useNavigate();
 
     function Logout(){
+        console.log("foi")
         const auth = getAuth();
         let response = window.confirm("Certeza que deseja sair ?");
         if (response === true) {
@@ -52,9 +53,9 @@ export function Header(){
                             Lote
                 </NavLink>
             </div>
-            <button>
+            <button onClick={Logout}>
                 Sair
-                <SignOut onClick={Logout} size={20}/>
+                <SignOut size={20}/>
             </button>
         </Nav>
     )
