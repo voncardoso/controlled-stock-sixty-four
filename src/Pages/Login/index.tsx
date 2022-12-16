@@ -18,7 +18,7 @@ export function Login() {
                 const user = useCredential.user
                 if(user){
                     window.localStorage.setItem("token", user.refreshToken)
-                    navigate("/home")
+                    navigate("/vendas")
                 }
             }).catch((error) => {
                 console.log("error")

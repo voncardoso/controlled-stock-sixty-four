@@ -16,8 +16,6 @@ interface PropsInventary{
 }
 
 
-
-
 export function Inventory(){
     const [isActive, setIsactive] = useState(false);
     const [dataIventory, setDataInventory] = useState<any>([]);
@@ -53,7 +51,6 @@ export function Inventory(){
 
     function FilterItem(event){
         setSeach(event.target.value)
-        console.log(seach.length)
         if(seach.length > 0){
             console.log("foi")
             setFilteredProduct(
@@ -69,7 +66,7 @@ export function Inventory(){
     function handleActiceModal(active: boolean){
         setIsactive(active)
     }
-    console.log(seach.length)
+    
     return(
         <>
             <ContainerInventory>

@@ -1,7 +1,6 @@
 import { FormEvent, useState } from "react";
-import { useForm } from "react-hook-form"
-import {X} from "phosphor-react"
-import {db} from "../../config/index"
+import { X } from "phosphor-react"
+import { db } from "../../config/index"
 import { ContainerResgistration, ContainerResgistrationForm } from "./style";
 import { addDoc, collection } from "firebase/firestore";
 
@@ -24,12 +23,12 @@ export function ProductRegistration({isActive,  setIsactive}: PropsModal){
 
     async function handleSubmit(event: FormEvent){
         event.preventDefault();
-
+        const date = new Date()
         try{
             const docRef = await addDoc(collection(db, "Inventory"), {
                 name: productsName,
                 value: Number(productaValue),
-                date: productaDate,
+                date: new Intl.DateTimeFormat('en-US').format(date),
                 amount: Number(productaAmount)
             })
 
@@ -64,13 +63,6 @@ export function ProductRegistration({isActive,  setIsactive}: PropsModal){
                     type="text" 
                     value={productaValue}
                     onChange={(event) => setProductValue(event.target.value)}
-                />
-
-                <label htmlFor="">Data</label>
-                <input 
-                    type="date" 
-                    value={productaDate}
-                    onChange={(event) => setProductDate(event.target.value)}
                 />
 
                 <label htmlFor="">Quantidade</label>
