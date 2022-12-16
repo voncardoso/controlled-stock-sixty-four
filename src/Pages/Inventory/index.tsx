@@ -50,7 +50,7 @@ export function Inventory(){
         calcPagination()
     },[dataIventory, currentPage])
 
-    function FilterItem(event){
+    function FilterItem(event: React.ChangeEvent<HTMLInputElement>){
         setSeach(event.target.value)
         if(seach.length > 0){
             console.log("foi")
@@ -178,7 +178,7 @@ export function Inventory(){
                 
             </ContainerInventory >
 
-            <ProductRegistration isActive={isActive}  setIsactive={setIsactive} setReload={setReload}/>
+            <ProductRegistration isActive={isActive}  setIsactive={setIsactive} />
         </>
     )
 }

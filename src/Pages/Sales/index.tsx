@@ -49,7 +49,7 @@ export function Sales(){
         calcPagination()
     },[dataSales, currentPage])
 
-    function FilterItem(event){
+    function FilterItem(event: React.ChangeEvent<HTMLInputElement>){
         setSeach(event.target.value)
         if(seach.length > 0){
             console.log("foi")

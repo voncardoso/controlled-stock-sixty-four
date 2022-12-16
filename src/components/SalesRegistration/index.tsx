@@ -27,8 +27,8 @@ export function SalesRegistration({isActive,  setIsactive}: PropsModal){
     const [amount, setAmount] = useState<any>(0)
     const [money, setMoney] = useState("")
     const filter = dataIventory.filter((item: any) => item.id === id)
-    const [teste, setTeste] = useState(null)
-    let disebladAmount = null;
+    const [teste, setTeste] = useState<Boolean>(false)
+    let disebladAmount: boolean = false;
 
     useEffect(() =>{
         async function getInvevtory(){
