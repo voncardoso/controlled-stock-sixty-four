@@ -26,7 +26,7 @@ export function Inventory(){
     const [filteredProduct, setFilteredProduct] = useState<[]>([]) 
     const [seach, setSeach] = useState("") 
     const mobile = useMedia('(max-width: 31rem)')
-
+    const [reload, setReload] = useState(false)
 
     useEffect(() =>{
         async function getInvevtory(){
@@ -35,6 +35,7 @@ export function Inventory(){
             setDataInventory(querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
         }
         getInvevtory()
+        setReload(false)
     },[])
 
     useEffect(() => {
@@ -177,7 +178,7 @@ export function Inventory(){
                 
             </ContainerInventory >
 
-            <ProductRegistration isActive={isActive}  setIsactive={setIsactive}/>
+            <ProductRegistration isActive={isActive}  setIsactive={setIsactive} setReload={setReload}/>
         </>
     )
 }

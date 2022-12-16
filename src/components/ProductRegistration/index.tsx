@@ -14,7 +14,7 @@ export function ProductRegistration({isActive,  setIsactive}: PropsModal){
     const [productaAmount, setProductAmount] = useState<any>(0);
     const [productaDate, setProductDate] = useState("");
     const [productaValue, setProductValue] = useState("");
-
+    
 
     function handleActiveModal(event: FormEvent){
         event.preventDefault()

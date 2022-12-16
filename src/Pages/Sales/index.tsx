@@ -27,6 +27,7 @@ export function Sales(){
     const mobile = useMedia('(max-width: 31rem)')
     const [seach, setSeach] = useState("")
 
+
     useEffect(() => {
         async function  getSales() {
             const collectionRef = collection(db, "Sales")
@@ -165,7 +166,7 @@ export function Sales(){
                 </TableSales >
                 {mobile ? "" : <>{seach.length > 0 ? "" : <PaginationComponent  pages={pages} handleChangePage={handleChangePage}/>}</>}
             </ContainerSales>
-            <SalesRegistration isActive={isActive} setIsactive={setIsactive}/>
+            <SalesRegistration isActive={isActive} setIsactive={setIsactive} />
         </>
     )
 }

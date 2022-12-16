@@ -39,6 +39,8 @@ export function SalesRegistration({isActive,  setIsactive}: PropsModal){
         getInvevtory()
     },[])
 
+
+
     useEffect(() =>{
         if(filter.length > 0){
             if(+amount <= +filter[0].amount){
