@@ -23,7 +23,7 @@ export function Sales(){
     const [itensPerPage, setItensPerPage] = useState(10);
     const [pages, setPages] = useState(0);
     const [currentItens, setCurrentItens] = useState<any>([]);
-    const [filteredProduct, setFilteredProduct] = useState<[]>([]) 
+   // const [filteredProduct, setFilteredProduct] = useState<[]>([]) 
     const mobile = useMedia('(max-width: 31rem)')
     const [seach, setSeach] = useState("")
 
@@ -49,15 +49,17 @@ export function Sales(){
         calcPagination()
     },[dataSales, currentPage])
 
-    function FilterItem(event: React.ChangeEvent<HTMLInputElement>){
-        setSeach(event.target.value)
-        if(seach.length > 0){
-            console.log("foi")
-            setFilteredProduct(
-                dataSales.filter((item: PropsSales) => item.name.toString().toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase()))
-            )
-        }
-    }
+    //function FilterItem(event: React.ChangeEvent<HTMLInputElement>){
+    //    setSeach(event.target.value)
+    //    if(seach.length > 0){
+    //        console.log("foi")
+    //        setFilteredProduct(
+    //            dataSales.filter((item: PropsSales) => item.name.toString().toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase()))
+    //        )
+    //    }
+    //}
+
+    const filteredProduct = dataSales.filter((item: PropsSales) => item.name.toString().toLocaleLowerCase().includes(seach))
 
     function handleActiceModal(active: boolean){
         setIsactive(active)
@@ -74,7 +76,7 @@ export function Sales(){
                             type="text"  
                             placeholder="Pesquisar venda"
                             value={seach}
-                            onChange={FilterItem}
+                            onChange={(event) => setSeach(event.target.value)}
                         />
                         <MagnifyingGlass size={20}/>
                     </div>

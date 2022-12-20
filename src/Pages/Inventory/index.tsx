@@ -23,7 +23,7 @@ export function Inventory(){
     const [itensPerPage, setItensPerPage] = useState(10);
     const [pages, setPages] = useState(0);
     const [currentItens, setCurrentItens] = useState<any>([]);
-    const [filteredProduct, setFilteredProduct] = useState<[]>([]) 
+  //  const [filteredProduct, setFilteredProduct] = useState<[]>([]) 
     const [seach, setSeach] = useState("") 
     const mobile = useMedia('(max-width: 31rem)')
     const [reload, setReload] = useState(false)
@@ -50,15 +50,17 @@ export function Inventory(){
         calcPagination()
     },[dataIventory, currentPage])
 
-    function FilterItem(event: React.ChangeEvent<HTMLInputElement>){
-        setSeach(event.target.value)
-        if(seach.length > 0){
-            console.log("foi")
-            setFilteredProduct(
-                dataIventory.filter((item: PropsInventary) => item.name.toString().toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase()))
-            )
-        }
-    }
+    //function FilterItem(event: React.ChangeEvent<HTMLInputElement>){
+    //    setSeach(event.target.value)
+    //    if(seach.length > 0){
+    //        console.log("foi")
+    //        setFilteredProduct(
+    //            dataIventory.filter((item: PropsInventary) => item.name.toString().toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase()))
+    //        )
+    //    }
+    //}
+
+    const filteredProduct = dataIventory.filter((item: PropsInventary) => item.name.toString().toLocaleLowerCase().includes(seach))
 
     const handleChangePage = (e: object, newPage: number) =>{
         setCurrentPerPage(newPage - 1)
@@ -77,7 +79,7 @@ export function Inventory(){
                             type="text"  
                             placeholder="Pesquisar produto"
                             value={seach}
-                            onChange={FilterItem}
+                            onChange={(event) => setSeach(event.target.value)}
                         />
                         <MagnifyingGlass size={20}/>
                     </div>
