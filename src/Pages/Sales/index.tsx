@@ -6,7 +6,7 @@ import { PaginationComponent } from "../../components/Pagination/Index";
 import { SalesRegistration } from "../../components/SalesRegistration";
 import { db } from "../../config";
 import useMedia from "../../Hooks/UseMedia";
-import { ContainerSales, HeaderSales, TableSales } from "./style";
+import { ContainerSales, HeaderDataSales, HeaderSales, TableSales } from "./style";
 
 interface PropsSales{
     id: string,
@@ -49,16 +49,10 @@ export function Sales(){
         calcPagination()
     },[dataSales, currentPage])
 
-    //function FilterItem(event: React.ChangeEvent<HTMLInputElement>){
-    //    setSeach(event.target.value)
-    //    if(seach.length > 0){
-    //        console.log("foi")
-    //        setFilteredProduct(
-    //            dataSales.filter((item: PropsSales) => item.name.toString().toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase()))
-    //        )
-    //    }
-    //}
-
+    const SomerProductSales = dataSales.reduce((prevProduct: any , product: PropsSales) => prevProduct + Number(product.amount), 0)
+    console.log("quantidade de protutos vendidos", SomerProductSales)
+    const MoneyTotalProductSales = dataSales.reduce((prevProduct: any , product: PropsSales) => prevProduct + (Number(product.amount) * product.money), 0)
+    console.log("valor vendidos", MoneyTotalProductSales)
     const filteredProduct = dataSales.filter((item: PropsSales) => item.name.toString().toLocaleLowerCase().includes(seach))
 
     function handleActiceModal(active: boolean){
@@ -70,6 +64,18 @@ export function Sales(){
     return (
         <>
             <ContainerSales>
+                <HeaderDataSales>
+                    <li>
+                        <span>Valor Total</span>
+                        <strong>{MoneyTotalProductSales.toLocaleString('pt-br', {
+                                                            style: 'currency', currency: 'BRL'
+                                                        })}</strong>
+                    </li>
+                    <li>
+                        <span>Produtos vendidos</span>
+                        <strong>{SomerProductSales}</strong>
+                    </li>
+                </HeaderDataSales>
                 <HeaderSales>
                     <div>
                         <input 
@@ -106,7 +112,7 @@ export function Sales(){
                                                             style: 'currency', currency: 'BRL'
                                                         })}</td>
                                             <td>{item.date}</td>
-                                            <td style={{color: "#11e6a6"}}>{item.amount}</td>
+                                            <td style={{color: "#4EA8DE"}}>{item.amount}</td>
                                        </tr>
                                     )
                                 })}
@@ -121,7 +127,7 @@ export function Sales(){
                                                             style: 'currency', currency: 'BRL'
                                                         })}</td>
                                             <td>{item.date}</td>
-                                            <td style={{color: "#11e6a6"}}>{item.amount}</td>
+                                            <td style={{color: "#4EA8DE"}}>{item.amount}</td>
                                        </tr>
                                     )
                                 })}
@@ -141,7 +147,7 @@ export function Sales(){
                                                         style: 'currency', currency: 'BRL'
                                                     })}</td>
                                         <td>{item.date}</td>
-                                        <td style={{color: "#11e6a6"}}>{item.amount}</td>
+                                        <td style={{color: "#4EA8DE"}}>{item.amount}</td>
                                    </tr>
                                 )
                                 })}
@@ -156,7 +162,7 @@ export function Sales(){
                                                             style: 'currency', currency: 'BRL'
                                                         })}</td>
                                             <td>{item.date}</td>
-                                            <td style={{color: "#11e6a6"}}>{item.amount}</td>
+                                            <td style={{color: "#4EA8DE"}}>{item.amount}</td>
                                        </tr>
                             )
                         })}

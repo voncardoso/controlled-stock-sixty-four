@@ -111,7 +111,7 @@ export function Inventory(){
                                                     style: 'currency', currency: 'BRL'
                                                 })}</td>
                                                 <td>{inventary.date}</td>
-                                                <td style={{textAlign: "center",color: inventary.amount > 0 ? '#11e6a6' : '#FF9000'}}>{inventary.amount}</td>
+                                                <td style={{textAlign: "center",color: inventary.amount > 0 ? '#4EA8DE' : '#FF9000'}}>{inventary.amount}</td>
                                                 {mobile ? "" :  <td className="iconUpdate"><ArrowClockwise/></td>}
                                             </tr>
                                         )
@@ -126,7 +126,7 @@ export function Inventory(){
                                                     style: 'currency', currency: 'BRL'
                                                 })}</td>
                                                 <td>{inventary.date}</td>
-                                                <td style={{textAlign: "center",color: inventary.amount > 0 ? '#11e6a6' : '#FF9000'}}>{inventary.amount}</td>
+                                                <td style={{textAlign: "center",color: inventary.amount > 0 ? '#4EA8DE' : '#FF9000'}}>{inventary.amount}</td>
                                                 {mobile ? "" :  <td className="iconUpdate"><ArrowClockwise/></td>}
                                             </tr>
                                         )
@@ -146,7 +146,7 @@ export function Inventory(){
                                                     style: 'currency', currency: 'BRL'
                                                 })}</td>
                                                 <td>{inventary.date}</td>
-                                                <td style={{textAlign: "center",color: inventary.amount > 0 ? '#11e6a6' : '#FF9000'}}>{inventary.amount}</td>
+                                                <td style={{textAlign: "center",color: inventary.amount > 0 ? '#4EA8DE' : '#FF9000'}}>{inventary.amount}</td>
                                                {mobile ? "" :  <td className="iconUpdate"><ArrowClockwise/></td>}
                                             </tr>
                                         )
@@ -162,7 +162,7 @@ export function Inventory(){
                                                     style: 'currency', currency: 'BRL'
                                                 })}</td>
                                                 <td>{inventary.date}</td>
-                                                <td style={{textAlign: "center",color: inventary.amount > 0 ? '#11e6a6' : '#FF9000'}}>{inventary.amount}</td>
+                                                <td style={{textAlign: "center",color: inventary.amount > 0 ? '#4EA8DE' : '#FF9000'}}>{inventary.amount}</td>
                                                {mobile ? "" :  <td className="iconUpdate"><ArrowClockwise/></td>}
                                             </tr>
                                         )

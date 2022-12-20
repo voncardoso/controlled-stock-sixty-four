@@ -18,6 +18,30 @@ export const ContainerSales = styled.section`
     }
 `;
 
+export const HeaderDataSales = styled.ul`
+    width: 100%;
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    li{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        padding: 20px;
+        border-radius: 8px;
+        margin-bottom: 40px;
+        background: ${(props) => props.theme['inputs']};
+        span{
+            margin-bottom: 5px;
+            font-size: 0.875rem;
+        }
+
+        strong{
+            font-size: 2rem;
+        }
+    }
+`;
+
 export const HeaderSales = styled.header`
     width: 100%;
     display: flex;
