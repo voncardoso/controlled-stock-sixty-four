@@ -28,7 +28,7 @@ export function ProductRegistration({isActive,  setIsactive}: PropsModal){
             const docRef = await addDoc(collection(db, "Inventory"), {
                 name: productsName,
                 value: Number(productaValue),
-                date: new Intl.DateTimeFormat('en-US').format(date),
+                date: new Intl.DateTimeFormat('pt-BR').format(date),
                 amount: Number(productaAmount)
             })
 

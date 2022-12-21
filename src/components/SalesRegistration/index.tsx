@@ -72,7 +72,7 @@ export function SalesRegistration({isActive,  setIsactive}: PropsModal){
                     name: filter[0].name,
                     money: Number(money),
                     amount: Number(amount),
-                    date: new Intl.DateTimeFormat('en-US').format(date)
+                    date: new Intl.DateTimeFormat('pt-BR').format(date)
                 })
     
                 setId("")

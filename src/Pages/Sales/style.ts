@@ -40,6 +40,15 @@ export const HeaderDataSales = styled.ul`
             font-size: 2rem;
         }
     }
+
+    @media (max-width: 656px){
+        position: relative;
+        overflow-x: auto;
+        gap: 10px;
+        li{
+            min-width: 272.44px;
+        }
+    }
 `;
 
 export const HeaderSales = styled.header`
