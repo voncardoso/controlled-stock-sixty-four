@@ -23,7 +23,6 @@ export function Sales(){
     const [itensPerPage, setItensPerPage] = useState(10);
     const [pages, setPages] = useState(0);
     const [currentItens, setCurrentItens] = useState<any>([]);
-   // const [filteredProduct, setFilteredProduct] = useState<[]>([]) 
     const mobile = useMedia('(max-width: 31rem)')
     const [seach, setSeach] = useState("")
 
@@ -50,9 +49,7 @@ export function Sales(){
     },[dataSales, currentPage])
 
     const SomerProductSales = dataSales.reduce((prevProduct: any , product: PropsSales) => prevProduct + Number(product.amount), 0)
-    console.log("quantidade de protutos vendidos", SomerProductSales)
     const MoneyTotalProductSales = dataSales.reduce((prevProduct: any , product: PropsSales) => prevProduct + (Number(product.amount) * product.money), 0)
-    console.log("valor vendidos", MoneyTotalProductSales)
     const filteredProduct = dataSales.filter((item: PropsSales) => item.name.toString().toLocaleLowerCase().includes(seach))
 
     function handleActiceModal(active: boolean){

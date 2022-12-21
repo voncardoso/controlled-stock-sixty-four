@@ -22,8 +22,7 @@ export function Inventory(){
     const [currentPage, setCurrentPerPage] = useState(0);
     const [itensPerPage, setItensPerPage] = useState(10);
     const [pages, setPages] = useState(0);
-    const [currentItens, setCurrentItens] = useState<any>([]);
-  //  const [filteredProduct, setFilteredProduct] = useState<[]>([]) 
+    const [currentItens, setCurrentItens] = useState<any>([]); 
     const [seach, setSeach] = useState("") 
     const mobile = useMedia('(max-width: 31rem)')
     const [reload, setReload] = useState(false)
@@ -50,15 +49,7 @@ export function Inventory(){
         calcPagination()
     },[dataIventory, currentPage])
 
-    //function FilterItem(event: React.ChangeEvent<HTMLInputElement>){
-    //    setSeach(event.target.value)
-    //    if(seach.length > 0){
-    //        console.log("foi")
-    //        setFilteredProduct(
-    //            dataIventory.filter((item: PropsInventary) => item.name.toString().toLocaleLowerCase().includes(event.target.value.toLocaleLowerCase()))
-    //        )
-    //    }
-    //}
+    
 
     const filteredProduct = dataIventory.filter((item: PropsInventary) => item.name.toString().toLocaleLowerCase().includes(seach))
 
