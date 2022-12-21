@@ -64,9 +64,14 @@ export function Sales(){
                 <HeaderDataSales>
                     <li>
                         <span>Valor Total</span>
-                        <strong>{MoneyTotalProductSales.toLocaleString('pt-br', {
-                                                            style: 'currency', currency: 'BRL'
-                                                        })}</strong>
+                        <strong>
+                            {MoneyTotalProductSales
+                                .toLocaleString('pt-br', 
+                                {
+                                    style: 'currency', currency: 'BRL'
+                                }
+                            )}
+                        </strong>
                     </li>
                     <li>
                         <span>Produtos vendidos</span>

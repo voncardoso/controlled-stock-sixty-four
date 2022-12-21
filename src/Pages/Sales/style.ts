@@ -28,8 +28,8 @@ export const HeaderDataSales = styled.ul`
         flex-direction: column;
         width: 100%;
         padding: 20px;
+        margin-bottom: 12px;
         border-radius: 8px;
-        margin-bottom: 40px;
         background: ${(props) => props.theme['inputs']};
         span{
             margin-bottom: 5px;
@@ -55,6 +55,7 @@ export const HeaderSales = styled.header`
     width: 100%;
     display: flex;
     justify-content: space-between;
+    margin-top: 1.75rem;
     margin-bottom: 2.5rem;
     input{
         background: ${(props) => props.theme['inputs']};
