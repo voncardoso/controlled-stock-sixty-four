@@ -50,7 +50,7 @@ export function Header(){
                             isActive ? activeStyle : undefined
                         }  
                         to="/pedidos">
-                            Lote
+                            Pedidos
                 </NavLink>
             </div>
             <button onClick={Logout}>

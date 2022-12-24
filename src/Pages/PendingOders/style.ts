@@ -80,6 +80,37 @@ export const HeaderPendingOrders = styled.header`
     }
 `;
 
+export const ButtonTypePeddingOrder = styled.div`
+    margin-bottom: 20px;
+    border-radius: 8px;
+    border: 1.5px solid ${(props) => props.theme['gray-300']};
+    
+
+    
+    button:first-child{
+        border: none;
+        background: none;
+        padding: 6px 6px;
+        color: ${(props) => props.theme['gray-100']};
+        cursor: pointer;
+        border-bottom-left-radius: 6px;
+        border-top-left-radius: 6px;
+        font-weight: 300;
+        
+    }
+
+    button:last-child{
+        border: none;
+        background: none;
+        padding: 6px 6px;
+        color: ${(props) => props.theme['gray-100']};
+        cursor: pointer;
+        border-top-right-radius: 6px;
+        border-bottom-right-radius: 6px;
+        font-weight: 300;
+    }
+`;
+
 export const TablePendingOrders = styled.table`
     width: 100%;
     border-collapse: collapse;
@@ -138,6 +169,10 @@ export const TablePendingOrders = styled.table`
             border-radius: 4px;
             transition: 0.2s;
             cursor: pointer;
+
+            svg{
+                color: ${(props) => props.theme['white']};
+            }
         }
 
         button:hover{
