@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ContainerSales = styled.section`
+export const ContainerPendingOrders = styled.section`
     max-width: 50rem;
     display: flex;
     flex-direction: column;
@@ -8,7 +8,6 @@ export const ContainerSales = styled.section`
     align-items: center;
     margin: 3.75rem auto 0 auto;
     padding: 0px 20px ;
-
 
     nav{
         margin-bottom: 20px;
@@ -19,45 +18,13 @@ export const ContainerSales = styled.section`
     }
 `;
 
-export const HeaderDataSales = styled.ul`
-    width: 100%;
-    display: flex;
-    gap: 20px;
-    list-style: none;
-    li{
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        padding: 20px;
-        margin-bottom: 12px;
-        border-radius: 8px;
-        background: ${(props) => props.theme['inputs']};
-        span{
-            margin-bottom: 5px;
-            font-size: 0.875rem;
-        }
-
-        strong{
-            font-size: 2rem;
-        }
-    }
-
-    @media (max-width: 656px){
-        position: relative;
-        overflow-x: auto;
-        gap: 10px;
-        li{
-            min-width: 272.44px;
-        }
-    }
-`;
-
-export const HeaderSales = styled.header`
+export const HeaderPendingOrders = styled.header`
     width: 100%;
     display: flex;
     justify-content: space-between;
     margin-top: 1.75rem;
     margin-bottom: 2.5rem;
+
     input{
         background: ${(props) => props.theme['inputs']};
         border: none;
@@ -112,8 +79,8 @@ export const HeaderSales = styled.header`
     }
 `;
 
-export const TableSales = styled.table`
-    width: 100%;
+export const TablePendingOrders = styled.table`
+     width: 100%;
     border-collapse: collapse;
     margin-bottom: 20px;
 

@@ -5,7 +5,7 @@ import { ProtectedRouter } from "./components/ProtectedRouter";
 import {  Sales } from "./Pages/Sales";
 import { Inventory } from "./Pages/Inventory";
 import { Login } from "./Pages/Login/index";
-import { Lote } from "./Pages/Lote";
+import { PendingOders } from "./Pages/PendingOders";
 
 export function Router(){
 
@@ -23,9 +23,9 @@ export function Router(){
                         <Inventory />
                     </ProtectedRouter>}
                 />
-                <Route path="/lote" element={
+                <Route path="/pedidos" element={
                     <ProtectedRouter>
-                        <Lote/>
+                        <PendingOders />
                     </ProtectedRouter>}
                 />
             </Route>

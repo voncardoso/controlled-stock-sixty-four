@@ -49,7 +49,7 @@ export function Header(){
                         style={({ isActive }) =>
                             isActive ? activeStyle : undefined
                         }  
-                        to="/lote">
+                        to="/pedidos">
                             Lote
                 </NavLink>
             </div>

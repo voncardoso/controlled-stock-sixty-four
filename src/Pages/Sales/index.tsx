@@ -90,9 +90,10 @@ export function Sales(){
                     </div>
                     <button onClick={() =>{
                         handleActiceModal(true)
-                    }}>Nova Venda</button>
+                    }}>
+                        Nova Venda
+                    </button>
                 </HeaderSales>
-
                 <TableSales >
                     <thead>
                         <tr>
