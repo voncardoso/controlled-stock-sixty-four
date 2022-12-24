@@ -48,6 +48,7 @@ export function PedingOrderRegistration({isActive,  setIsActive}: PropsModal){
                 custumer: pedingNameCustomers,
                 product: pedingNameProduct,
                 amount: Number(pedingAmount),
+                status: false,
                 date: new Intl.DateTimeFormat('pt-BR').format(date),
             })
 

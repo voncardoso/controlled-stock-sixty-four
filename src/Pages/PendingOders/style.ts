@@ -50,6 +50,7 @@ export const HeaderPendingOrders = styled.header`
         letter-spacing: 0.5px;
         border: none;
         cursor: pointer;
+        transition: 0.2s;
     }
 
     button:hover{
@@ -80,7 +81,7 @@ export const HeaderPendingOrders = styled.header`
 `;
 
 export const TablePendingOrders = styled.table`
-     width: 100%;
+    width: 100%;
     border-collapse: collapse;
     margin-bottom: 20px;
 
@@ -117,15 +118,31 @@ export const TablePendingOrders = styled.table`
         font-size: 0.875rem;
         line-height: 1.6;
 
-        &:first-child {
-        width: 50%;
-        padding-left: 1.5rem;
-      }
 
-      &:last-child {
-        padding-right: 1.5rem;
-        text-align: center;
-      }
+        &:first-child {
+            width: 30%;
+            padding-left: 1.5rem;
+        }
+
+        &:last-child {
+            padding-right: 1.5rem;
+            text-align: center;
+        }
+
+      button{
+            border: none;
+            font-size: 0.875rem;
+            background: ${(props) => props.theme['red-700']};
+            color: ${(props) => props.theme['white']};
+            padding: 4px 6px;
+            border-radius: 4px;
+            transition: 0.2s;
+            cursor: pointer;
+        }
+
+        button:hover{
+            background: ${(props) => props.theme['red-500']};
+        }
     }
 
     @media (max-width: 500px) {

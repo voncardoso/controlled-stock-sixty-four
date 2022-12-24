@@ -126,9 +126,12 @@ export function Sales(){
                                     return(
                                        <tr key={item.id}>
                                             <td>{item.name}</td>
-                                            <td>{item.money.toLocaleString('pt-br', {
-                                                            style: 'currency', currency: 'BRL'
-                                                        })}</td>
+                                            <td>{item.money
+                                                .toLocaleString(
+                                                    'pt-br', {
+                                                    style: 'currency', currency: 'BRL'
+                                                })}
+                                            </td>
                                             <td>{item.date}</td>
                                             <td style={{color: "#4EA8DE"}}>{item.amount}</td>
                                        </tr>
