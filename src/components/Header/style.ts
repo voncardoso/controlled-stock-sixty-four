@@ -1,4 +1,23 @@
 import styled from "styled-components";
+export const ContainerHeader = styled.section`
+
+  >div{
+    margin: 20px;
+    padding-bottom: 20px;
+    display: flex;
+    align-items: flex-start;
+    h1{
+      text-align: center;
+      width: 100%;
+      font-size: 1.5rem;
+    }
+    >svg{
+      height: 32px;
+    }
+  }
+
+`;
+
 
 export const Nav = styled.nav`
     display: flex;
@@ -51,4 +70,76 @@ export const Nav = styled.nav`
     z-index: 1000;
     top: 0;
    }
+`;
+
+interface Status {
+  active: boolean,
+}
+
+
+export const NavMobile = styled.nav<Status>`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: none;
+  z-index: 10000;
+  background: ${(props) => props.theme['background']};
+  display:  ${(props) => props.active ? "" : "none"};
+
+  animation: slider;
+  animation-duration: 0.4s;
+
+    @keyframes slider {
+     from{
+        opacity: 0;
+     } 
+     to{
+        opacity: 1;
+     }  
+    }
+
+  > svg{
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-right: 20px;
+    margin-top: 20px;
+  }
+
+  div{
+    z-index: 100000;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    font-size: 1.5rem;
+    
+    a{
+      color: ${(props) => props.theme["white"]};
+      text-decoration: none;
+      cursor: pointer;
+    }
+  }
+
+  button{
+    display: flex;
+    align-items: flex-end;
+    gap: 5px;
+    margin-top: 20px;
+    font-size: 1.5rem;
+    border: none;
+    color: ${(props) => props.theme["white"]};
+    background: none;
+    cursor: pointer;
+    svg{
+      position: relative;
+      height: 25px;
+    }
+    
+  }
+
+
 `;
