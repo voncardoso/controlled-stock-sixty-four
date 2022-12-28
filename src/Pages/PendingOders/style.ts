@@ -13,8 +13,8 @@ export const ContainerPendingOrders = styled.section`
         margin-bottom: 20px;
     }
 
-    @media (max-width: 500px){
-        
+    @media (max-width: 700px){
+        margin-top: 20px;
     }
 `;
 

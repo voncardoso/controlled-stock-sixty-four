@@ -3,33 +3,33 @@ import { createGlobalStyle } from 'styled-components'
 // para pode criar a tipagem de cores no styled-componets
 
 export const GlobalStyles = createGlobalStyle`
-     *{
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    :focus{
-        outline: 0;
-        box-shadow: 0 0 0 2px ${(props) => props.theme['red-500']};
-        border-radius: 6px;
-    }
-    
-    body{
-        background: ${(props) => props.theme['background']};
-        color: ${(props) => props.theme['white']};
-        -webkit-font-smoothing: antialiased;
-    }
+        :focus{
+            outline: 0;
+            box-shadow: 0 0 0 2px ${(props) => props.theme['red-500']};
+            border-radius: 6px;
+        }
 
-    body, input, textarea, button{
-        font-family: 'Roboto Slab', serif;
-        font-weight: 400;
-        font-size: 1rem;
-    }
+        body{
+            background: ${(props) => props.theme['background']};
+            color: ${(props) => props.theme['white']};
+            -webkit-font-smoothing: antialiased;
+        }
 
-    @media (max-width: 768px) {
-    html{
-        font-size: 87.5%; /*faz a finte reduzir naralmente*/
-    }
-}
+        body, input, textarea, button{
+            font-family: 'Roboto Slab', serif;
+            font-weight: 400;   
+            font-size: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            html{
+                font-size: 87.5%; /*faz a finte reduzir naralmente*/
+            }
+        }
 `;
